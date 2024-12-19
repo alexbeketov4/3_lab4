@@ -70,6 +70,21 @@ public:
 		this->data[index] = value;
 	}
 
+	/*void Resize(size_t newSize)
+	{
+		T* newData = new T[newSize];
+		size_t minSize = (size < newSize) ? size : newSize;
+
+		for (int i = 0; i < minSize; i++)
+		{
+			newData[i] = this->data[i];
+		}
+
+		delete[] this->data;
+		this->data = newData;
+		this->size = newSize;
+	}*/
+
 	void Resize(size_t newSize)
 	{
 		T* newData = new T[newSize];
@@ -78,6 +93,12 @@ public:
 		for (int i = 0; i < minSize; i++)
 		{
 			newData[i] = this->data[i];
+		}
+
+		// Инициализация новых элементов
+		for (int i = minSize; i < newSize; i++)
+		{
+			newData[i] = T(); // Значение по умолчанию
 		}
 
 		delete[] this->data;

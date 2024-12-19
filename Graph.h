@@ -1,5 +1,7 @@
 #pragma once
 #include "Vertex.h"
+#include "DictionaryOnSequence.h"
+#include "ArraySequence.h"
 
 template<class T>
 class Graph
@@ -13,9 +15,7 @@ public:
 
     virtual Vertex<T>* GetVertex(int id) const = 0;
 
-    //virtual void removeVertex(T id) = 0;
+    virtual DictionaryOnSequence<T, Vertex<T>*> GetVertices() const = 0;
 
-    //virtual void removeEdge(T fromId, T toId) = 0;
-
-    //virtual SetOnBinaryTree<Edge<T>*> getNeighbors(T id) const = 0;
+    virtual ArraySequence<T> FindShortestPath(T startId, T endId) const = 0;
 };

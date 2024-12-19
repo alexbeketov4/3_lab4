@@ -15,6 +15,14 @@ private:
 public:
     Vertex(T id) : id(id) {}
 
+    ~Vertex() 
+    {
+        for (int i = 0; i < edges.GetLength(); ++i) 
+        {
+            delete edges.Get(i);
+        }
+    }
+
     T getId() const
     {
         return id;

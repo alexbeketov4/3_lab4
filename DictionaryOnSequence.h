@@ -31,6 +31,15 @@ public:
         return list.GetLength();
     }
 
+    TKey GetKey(int index) const
+    {
+        if (index < 0 || index >= list.GetLength())
+        {
+            throw "Index out of range";
+        }
+        return list.Get(index).key;
+    }
+
     TElement Get(TKey key) const override
     {
         for (int i = 0; i < list.GetLength(); ++i)
