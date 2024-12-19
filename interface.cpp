@@ -5,6 +5,7 @@
 #include "DirectGraph.h"
 #include "UndirectGraph.h"
 #include "DictionaryOnSequence.h"
+#include "Tests.h"
 #include <cmath>
 #include <map>
 
@@ -37,6 +38,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+
+    try
+    {
+        RunAllTests();
+    }
+    catch (const std::out_of_range& e)
+    {
+        MessageBox(NULL, L"Something wrong with tests", L"Test Notification", MB_OK);
+        PostQuitMessage(0);
+    }
 
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_MY3LAB4, szWindowClass, MAX_LOADSTRING);
